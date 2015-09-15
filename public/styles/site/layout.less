@@ -27,7 +27,9 @@
 #ucsb {
 	color: gold;
 	float: right;
-	font-size: 60px;
+	font-size: 4vw;
+	font-family: Helvetica;
+	font-weight: bold;
 }
 
 #header-title {
@@ -35,7 +37,7 @@
 	font-weight: bold;
 	color: white;
 	font-family: Helvetica;
-	font-size: 60px;
+	font-size: 4vw;
 	letter-spacing: 2px;
 }
 
@@ -48,7 +50,7 @@
 	position: relative;
 	font-family: roboto;
 	letter-spacing: 1px;
-	width: 80%;
+	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -57,13 +59,16 @@
 	background: white;
 	padding-bottom: 20px;
 	height: auto;
+	padding-left: 15px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
 }
 
 .content-title {
 	padding-right: 15px;
 	padding-left: 15px;
 	font-size: 200%;
-	text-align: center;
 	padding-top: 60px;
 	color: #FFB511;
 	margin-bottom: 1%;
@@ -72,10 +77,7 @@
 .content-text-small {
 	padding-right: 15px;
 	padding-left: 15px;
-	text-align:center;
-	padding-top: 15px;
 	font-family: roboto;
-	margin-bottom: 1%;
 	line-height: 26px;
 	font-size: 14px;
 }
@@ -83,31 +85,28 @@
 .content-text-small-black {
 	padding-right: 15px;
 	padding-left: 15px;
-	text-align: center;
 	padding-top: 15px;
 	font-family: roboto;
 }
 
 .content-text-apply {
-	text-align:center;
-	padding-top: 30px;
+	padding-left: 15px;
 	line-height: 1.3ems;
+	margin-bottom: 4%;
 }
 
 .content-text-big {
 	padding-right: 15px;
 	padding-left: 15px;
 	font-size: 150%;
-	text-align:center;
 	color: black;
 	padding-top: 15px;
 	line-height: 1.5ems;
 	font-family: roboto;
 }
 
-#footer {	
-	border-top: 1px solid @gray-lighter;
-	padding-top: 15px;
+#footer {
+	margin-top: 2%;
 	color: @gray-light;
 	text-align: center;
 }
@@ -128,30 +127,66 @@
 
 .main-title {
 	text-align: center;
-	width: 50%;
+	width: 100%;
+	height: auto;
 	margin-left: auto;
 	margin-right: auto;
-	padding-bottom: 15px;
-	margin-top: 2%;
-	border-bottom: 2px solid @gray-lighter;
+	border-bottom: 3px solid @gray-lighter;
+	background-image: url("/images/map.png");
 }
 
 .title-header {
-	font-size: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 2%;
+	padding-top: 2%;
+}
+
+.title-image {
+	width: 14%;
+}
+
+.title-description{
+	font-size: 2vw;
+	font-family: roboto;
+	color: white;
 	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
 }
 
 .secondary-header {
-	font-size: 20px;
+	font-size: 1.2vw;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.about-header {
+	font-weight: bold;
+	font-size: 30px;
+	color: #FFB511;
+}
+
+.about-description {
+	margin-bottom: 4%;
+	font-size: 1.4vw;
+}
+
+.about-link {
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 30px;
+	color: #FFB511;
+	width: 50%;
 	font-weight: bold;
 }
 
 .secondary-content {
-	width: 50%;
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: 20px;
+	width: 100%;
+	padding-top: 1.2vw;
 	padding-bottom: 30px;
+	margin-top: 2%;
 }
 
 video {
@@ -199,4 +234,14 @@ video {
 	height: 200px;
 }
 
+.panel-default {
+	border: none;
+}
+
+.image-holder {
+	margin-top: 14%;
+	width: 80%;
+	align-content: right;
+	margin-left: 6%;
+}
 

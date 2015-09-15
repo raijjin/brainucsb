@@ -19,8 +19,10 @@ keystone.init({
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',
 	'view engine': 'jade',
-	
+
 	'auto update': true,
+	'mongo': 'mongodb://localhost/brainucsb',
+
 	'session': true,
 	'auth': true,
 	'user model': 'User',

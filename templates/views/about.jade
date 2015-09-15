@@ -3,11 +3,15 @@ extends ../layouts/default
 block content
 	.panel.panel-default
 		.main-title
-			p(class='title-header') We are the center of UCSB's neuro-revolution. 
-			p We assemble & support research teams to attack the most fundamental problems in brain science. Providing intellectual, technical, and financial resources, we are changing how academic research is done. 
+			.title-header
+				img(src='/images/bi.png' class="title-image")
+			.title-description
+				p We are the center of UCSB's neuro-revolution. 	
 		.secondary-content
-			p(class="secondary-header")	Our research is meant to change the future. 
-			p	The UCSB Brain Initiative currently sponsors 3 major research teams. Check back soon for the official unveiling.
-			p(class="secondary-header")	Our team is all inclusive.
-			p	Our team spans from engineering, neuroscience, physics, and computer science to biology, history, literature, communications, & arts.
-			p(class="secondary-header")	Learn more about the National Brain Initiative at <a href="https://www.whitehouse.gov/BRAIN" target="_blank">whitehouse.gov/BRAIN</a>.
+			.secondary-header
+				p.about-header Our research is meant to change the future. 
+					p.about-description	The UCSB Brain Initiative currently sponsors 3 major research teams. Check back soon for the official unveiling.
+			.secondary-header
+				p.about-header Our team is all inclusive.
+					p.about-description	Our team spans from engineering, neuroscience, physics, and computer science to biology, history, literature, communications, & arts. We assemble & support research teams to attack the most fundamental problems in brain science.
+			p.about-link Learn more about the National Brain Initiative at <a href="https://www.whitehouse.gov/BRAIN" target="_blank">whitehouse.gov/BRAIN</a>
