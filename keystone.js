@@ -25,8 +25,6 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
-	'cookie secret': '(brainucsb)',
-	'mongo': 'mongodb://localhost/brainucsb'
 });
 
 // Load your project's Models
