@@ -1,9 +1,6 @@
+
 #header {
 	margin-top: 0px;
-}
-
-#index-body {
-	background: grey;
 }
 
 #inner-container {
@@ -12,9 +9,33 @@
 	margin-right: auto;
 }
 
+//////////////////////-NAVBAR-///////////////////////
+////////////////////////////////////////////////////
+
+.navbar-nav {
+	font-size: 18px;
+	margin-right: 10%;
+}
+
+.navbar-static-top {
+	background-color: black;
+}
+
+.navbar {
+	border: none;
+}
+
+.nav-link {
+	color: white;
+}
+
+
 .navbar-default {
 	margin-bottom: 0px;
 }
+
+//////////////////////-HEADER SECTION-//////////////////////
+///////////////////////////////////////////////////////////
 
 .hero {
 	height: 600px;
@@ -22,14 +43,6 @@
 	padding-right: 100px;
 	padding-left: 100px;
 	background-color: black;
-}
-
-#ucsb {
-	color: gold;
-	float: right;
-	font-size: 4vw;
-	font-family: Helvetica;
-	font-weight: bold;
 }
 
 #header-title {
@@ -55,15 +68,33 @@
 	margin-right: auto;
 }
 
-.main-content {
-	background: white;
-	padding-bottom: 20px;
-	height: auto;
-	padding-left: 15px;
+#ucsb {
+	color: gold;
+	float: right;
+	font-size: 4vw;
+	font-family: Helvetica;
+	font-weight: bold;
+}
+
+
+video {
 	width: 100%;
+	height: 600px;
 	display: flex;
 	flex-direction: row;
 }
+
+//////////////////////-BODY CONTENT-///////////////////////
+//////////////////////////////////////////////////////////
+
+.btn {
+	color: white;
+}
+
+.button {
+	background-color: black;
+}
+
 
 .content-title {
 	padding-right: 15px;
@@ -105,24 +136,57 @@
 	font-family: roboto;
 }
 
-#footer {
-	margin-top: 2%;
-	color: @gray-light;
-	text-align: center;
-}
-
-.gallery-image img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
-.panel {
-	margin-right: 50px;
-	margin-left: 50px;
-	margin-top: 30px;
-	width: auto;
+.main-content {
+	background: white;
+	padding-bottom: 20px;
 	height: auto;
+	padding-left: 15px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.text-center {
+	position: relative;
+	bottom: 320px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+//////////////////////-ABOUT PAGE-///////////////////////
+////////////////////////////////////////////////////////
+
+.about-header {
+	font-weight: bold;
+	font-size: 30px;
+	color: #FFB511;
+}
+
+.about-description {
+	margin-bottom: 4%;
+	font-size: 1.4vw;
+}
+
+.about-link {
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 30px;
+	color: #FFB511;
+	width: 50%;
+	font-weight: bold;
+}
+
+.about-banner {
+	background-color: black;
+	width: 700px;
+	height: 200px;
+}
+
+.image-holder {
+	margin-top: 14%;
+	width: 80%;
+	align-content: right;
+	margin-left: 6%;
 }
 
 .main-title {
@@ -133,6 +197,32 @@
 	margin-right: auto;
 	border-bottom: 3px solid @gray-lighter;
 	background-image: url("/images/map.png");
+}
+
+.panel {
+	margin-right: 50px;
+	margin-left: 50px;
+	margin-top: 30px;
+	width: auto;
+	height: auto;
+}
+
+.panel-default {
+	border: none;
+}
+
+.secondary-header {
+	font-size: 1.2vw;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.secondary-content {
+	width: 100%;
+	padding-top: 1.2vw;
+	padding-bottom: 30px;
+	margin-top: 2%;
 }
 
 .title-header {
@@ -155,93 +245,12 @@
 	letter-spacing: 1px;
 }
 
-.secondary-header {
-	font-size: 1.2vw;
-	width: 50%;
-	margin-left: auto;
-	margin-right: auto;
-}
+//////////////////////-FOOTER-///////////////////////
+////////////////////////////////////////////////////
 
-.about-header {
-	font-weight: bold;
-	font-size: 30px;
-	color: #FFB511;
-}
-
-.about-description {
-	margin-bottom: 4%;
-	font-size: 1.4vw;
-}
-
-.about-link {
-	margin-left: auto;
-	margin-right: auto;
-	font-size: 30px;
-	color: #FFB511;
-	width: 50%;
-	font-weight: bold;
-}
-
-.secondary-content {
-	width: 100%;
-	padding-top: 1.2vw;
-	padding-bottom: 30px;
+#footer {
 	margin-top: 2%;
-}
-
-video {
-	width: 100%;
-	height: 600px;
-	display: flex;
-	flex-direction: row;
-}
-
-.btn {
-	color: white;
-}
-
-.button {
-	background-color: black;
-}
-
-.text-center {
-	position: relative;
-	bottom: 320px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.navbar-nav {
-	font-size: 18px;
-	margin-right: 10%;
-}
-
-.navbar-static-top {
-	background-color: black;
-}
-
-.navbar {
-	border: none;
-}
-
-.nav-link {
-	color: white;
-}
-
-.about-banner {
-	background-color: black;
-	width: 700px;
-	height: 200px;
-}
-
-.panel-default {
-	border: none;
-}
-
-.image-holder {
-	margin-top: 14%;
-	width: 80%;
-	align-content: right;
-	margin-left: 6%;
+	color: @gray-light;
+	text-align: center;
 }
 
