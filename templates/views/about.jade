@@ -14,4 +14,32 @@ block content
 			.secondary-header
 				p.about-header Our team is all inclusive.
 					p.about-description	Our team spans from engineering, neuroscience, physics, and computer science to biology, history, literature, communications, & arts. We assemble & support research teams to attack the most fundamental problems in brain science.
-			//- p.about-link Learn more about the National Brain Initiative at <a href="https://www.whitehouse.gov/BRAIN" target="_blank">whitehouse.gov/BRAIN</a>
+			.secondary-header
+				p.about-header Leading the UCSB Brain Initiative are: 
+					table(cellpadding="1" cellspacing = "1")
+						tbody
+							tr								
+								td
+									img(src='/images/kosik.jpg')
+								td
+									img(src='/images/queenan.jpg')
+							tr
+								td
+									p(id="contact-name")	<strong>Ken Kosik</strong>, PhD
+									p	Director
+									p	Dr. Kosik is the Harriman Professor of Neuroscience at UCSB. A neurologist, he joined UCSB in 2004 after two decades at Harvard Medical School.
+									p(style="font-style:italic;")	kosik@lifesci.ucsb.edu
+								td
+									p(id="contact-name")	<strong>Bridget Queenan</strong>, PhD
+									p	Associate Director
+									p	Dr. Queenan is a neuroscientist trained at Harvard & Georgetown. She recently joined UCSB from Johns Hopkins University.
+									p(style="font-style:italic;")	queenan@brain.ucsb.edu
+		.secondary-header
+			p.about-header Headquartered at the award-winning Bren Hall, overlooking the Pacific Ocean.
+				p.about-description	We encourage you to visit our spectacular campus and new office.
+			div(style="display:table;")	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script><div style="overflow:hidden;height:300px;width:350px;"><div id="gmap_canvas" style="height:300px;width:350px;display:table-cell;"></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type="text/javascript"> function init_map(){var myOptions = {zoom:17,center:new google.maps.LatLng(34.412114,-119.842014),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(34.412114, -119.842014)});infowindow = new google.maps.InfoWindow({content:"<b>UCSB Brain Initiative</b><br/>Bren 4330<br/> Isla Vista, CA" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+				div(style="display:table-cell;padding-left:20px;")
+					p Bren Hall, Isla Vista, CA, United States
+					p Bren 4330 
+					p 1.805.893.2726
+					p(style="font-style:italic;") BrainInitiativeUCSB@gmail.com
