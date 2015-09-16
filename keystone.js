@@ -21,6 +21,7 @@ keystone.init({
 	'view engine': 'jade',
 
 	'auto update': true,
+	'mongo': 'mongodb://localhost/brainucsb',
 
 	'session': true,
 	'auth': true,
