@@ -16,6 +16,8 @@ html
 		//- All .less files will be automatically compiled and minified in production.
 		link(href="/styles/vendor.css", rel="stylesheet")
 		link(href="/styles/site.css", rel="stylesheet")
+		link(href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,500' rel='stylesheet' type='text/css')
+		link(href='https://fonts.googleapis.com/css?family=Lato:400,700,300,900' rel='stylesheet' type='text/css')
 
 		//- This file provides the default styling for the KeystoneJS Content Editor
 		if user && user.canAccessKeystone
@@ -43,7 +45,7 @@ html
 			//- Customise your site's navigation by changing the navLinks Array in ./routes/middleware.js
 			//- ... or completely change this header to suit your design.
 
-			div(role="navigation").navbar.navbar-default.navbar-fixed-top
+			div(role="navigation").navbar.navbar-inverse.navbar-fixed-top
 				.container-fluid
 					.navbar-header
 						button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
@@ -88,6 +90,8 @@ html
 		.container: #footer
 
 			//- You don't _have_ to include a link saying your site is powered by KeystoneJS, but we appreciate it!
+			p Questions can be emailed to 
+				a(href='mailto:queenan@brain.ucsb.edu') queenan@brain.ucsb.edu
 			p Located at <a href = https://www.google.com/maps/dir//34.4131924,-119.8422001/@34.4126293,-119.8423348,17.21z target="_blank">Bren Hall, Isla Vista, CA, United States</a>
 			p Website under construction!
 			// Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.
