@@ -1,35 +1,21 @@
 extends ../layouts/default
 
 block content
-	#index-body
-		#inner-container
-			.hero
-				video(autoplay loop poster="/..images/bi.png")
-						source(src="/../images/brain2.mp4" type="video/mp4")
-						source(src="/../images/brain2.ogg" type="video/ogg")
-						img(src="/../images/bi.png" title="your device does not support this video")
-				.hero-content
-					.text-center
-						#header-title BRAIN INITIATIVE // 
-							span.ucsb UCSB
-			.main-content
-				aside.description-image.hidden-sm.hidden-xs
-					img(src="/images/brenhall.jpg" class='image-holder')
-				.content-wrapper
-					.content-title
-						strong UCSB Faculty Positions in Neuroscience & Neuroengineering
-					.content-text-small The University of California Santa Barbara is hiring three faculty in various areas of
-						|	neuroscience & neuroengineering. We will be hiring faculty members committed to interdisciplinary, collaborative research that is visionary and will transform neuroscience.
-					.content-text-big 
-						p <strong>Assistant Professor</strong> - Department of Psychological & Brain Sciences
-						.content-text-apply
-							a.button(type="button" class="btn btn-default btn-lg" href='https://recruit.ap.ucsb.edu/apply/JPF00554' target="_blank") Apply Now
-						p <strong>Assistant Professor</strong> - College of Letters & Science
-						.content-text-apply
-							a.button(type="button" class="btn btn-default btn-lg" href='https://recruit.ap.ucsb.edu/apply/JPF00553' target="_blank") Apply Now
-						p <strong>Full, Associate, or Assistant Professor</strong> - The College of Engineering
-						.content-text-apply
-							a.button(type="button" class="btn btn-default btn-lg" href='mailto:braininitiativeUCSB@gmail.com') Apply Now
-					.content-text-small (Positions in the Colleges of Engineering and Letters & Sciences will 
-						|	be determined based on the applicant’s research area.)
+	#fullpage
+		.container.landing-container
+			.description
+				h2
+					ul.research
+						li.pillar LET THERE BE 
+							.motto-color LIGHT
+				hr
+				p.info-text We are the center of UCSB's neuro-revolution. We're not here to just study the brain.
+				p.info-text <strong>We're here to solve it.
+				h2 
+					a(href='/about')= 'Learn more.'
+			img(src = "/images/brain-transparent.gif" class = "front-page-brain")
 
+			//- Here's an example of using a bootstrap class (xs-hidden) to hide the image on extra small screens:
+			//-img(src = "/images/briucsb.png" class = "front-page-brain xs-hidden")
+
+			//- I think in this case it works fine with just media queries. I think we'll end up preferring media queries over bootstrap classes.

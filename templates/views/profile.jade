@@ -1,0 +1,85 @@
+//-extend ../layouts/default
+//-block js 
+	script(src='/js/effects/stickynav.js')
+
+//-include ../mixins/post
+//-include ../mixins/event
+
+//-block content
+
+	.container
+		.marker-container
+			span.marker RESEARCH > TEAM
+		iframe.video-container(width='1140', height='420', src='https://www.youtube.com/embed/sRwVQwdY8sc' frameborder='0' allowfullscreen)
+		img.image-circle(src="images/drq.jpg")
+		.image-bar
+			.column
+				ul 6
+					li.profile-tab publications
+				ul 2	
+					li.profile-tab posts
+				ul 2	
+					li.profile-tab videos
+		.bold-profile Bridget Queenan
+			.pdescription-container
+				p.profile-description Whatever UCSB BRAIN INITIATIVE information we can give regarding our three points of emphasis. It can be a good idea to add information regarding personal/bio info as well as overall goal within the brain initiative. OR student aimed goals.
+		.table-container
+			row.events-list
+					if filters.category && !data.category
+						h3.text-muted Invalid Category.
+					else
+						if data.events.length
+							.blog-profile
+								each event in data.events
+									+event(event)
+							if data.events.totalPages > 1
+								.event-collapse
+									h4.text-weight-normal SHOW MORE 
+										strong 
+											| (#{data.events.total})
+		.post-container
+			column
+				if filters.category && !data.category
+					h3.text-muted Invalid Category.
+				else
+					if data.posts.length
+						.post-description
+							each post in data.posts
+								+post(post)
+							if data.posts.totalPages > 1
+							else
+								h4.text-weight-normal Showing #{utils.plural(data.posts.length, '* post')}
+
+
+						//-	if data.posts.totalPages > 1
+								ul.pagination
+									if data.posts.previous
+										li: a(href='?page=' + data.posts.previous): span.glyphicon.glyphicon-chevron-left
+									else
+										li.disabled: a(href='?page=' + 1): span.glyphicon.glyphicon-chevron-left
+									each p, i in data.posts.pages
+										li(class=data.posts.currentPage == p ? 'active' : null)
+											a(href='?page=' + (p == '...' ? (i ? data.posts.totalPages : 1) : p ))= p
+									if data.posts.next
+										li: a(href='?page=' + data.posts.next): span.glyphicon.glyphicon-chevron-right
+									else
+										li.disabled: a(href='?page=' + data.posts.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
+					//-	else
+							if data.category
+								if data.category.hide_old_posts == "optional"
+									h3.text-muted There are currently no upcoming events!
+									h3.text-muted 
+										a(href='/blog/' + data.category.key + "/all")= 'Click here to view all events.' 
+								else
+									h3.text-muted There are no posts in the category #{data.category.name}.
+							else
+								h3.text-muted There are no posts yet.
+								if data.categories.length
+
+
+
+
+
+
+
+		

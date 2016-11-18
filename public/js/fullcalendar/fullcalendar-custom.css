@@ -1,0 +1,53 @@
+.fc-unthemed .fc-today {
+	background-color: #ffb511;
+}
+
+.fc-day-number {
+	color: #757575;
+}
+
+.fc.fc-unthemed.fc-ltr {
+	font-family: liberator;
+	font-size: 1em;
+	margin-left: 24px;
+}
+
+.fc.fc-unthemed.fc-ltr {
+	margin-top: 2%;
+
+}
+
+tr:first-child>td>.fc-day-grid-event {
+	background-color: #E1BEE7;
+}
+
+.fc-event {
+	border: 1px solid #E1BEE7;
+}
+
+
+
+.fc-content {
+	display: flex;
+	flex-direction: column;
+	font-size: 2em;
+}
+
+.custom-tweet-button {
+	background: url('/images/calendar.png')
+}
+
+#calendar {
+	margin-right: 0;
+}
+
+.fc-row.fc-widget-header {
+	color: #FFCA28;
+	font-family: liberator-medium;
+	letter-spacing: 1px;
+}
+
+.container-calendar {
+	display: flex;
+	flex-direction: row;
+}

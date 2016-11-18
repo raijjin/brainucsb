@@ -1,0 +1,123 @@
+extends ../layouts/default
+block js 
+	script(src='/js/effects/stickynav.js')
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js')
+	script(src="/js/fullcalendar/fullcalendar.min.js")
+	script(src="/js/fullcalendar/gcal.js")
+	script(src="/js/tether-1.3.3/tether.min.js")
+	script(src="/js/drop-1.4.2/drop.min.js")
+	script(src="/js/jquery/fullcalendar.js")
+	script(async src="//platform.twitter.com/widgets.js")
+
+mixin event(post)
+	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id })).blog-post
+		if post.image.exists
+				img(src=post._.image.fit(450,450)).img
+		.post-description
+			h2: a(href='/blog/post/' + post.slug class="post-title")= post.title
+			if post.publishedDate
+				- var x = 0
+				if post.categories && post.categories.length
+					each cat, i in post.categories
+						if cat.name == "News"
+							p.lead.text-muted
+								| Date Posted: #{post._.publishedDate.format('MMMM Do, YYYY')} 
+							- x = 1 
+							break
+				if x == 0
+					p.lead.text-muted
+						img.calendar(src="/images/calendar.png")
+						| #{post._.publishedDate.format('MMMM Do, YYYY')} 
+			-//if post.author
+			-//	| by #{post.author.name.first}
+			if post.location
+				p.lead.text-muted 		
+					img.calendar(src="/images/globe.png")
+					span= post.location
+			p!= post.content.brief
+			if post.content.extended
+				p.read-more: a(href='/blog/post/' + post.slug) Read more...
+			if post.categories && post.categories.length
+				| CATEGORY: 
+				each cat, i in post.categories
+					a(href='/blog/' + cat.key)= cat.name
+					if i < post.categories.length - 1
+						| , 
+					else
+						|  
+
+//-block intro
+	.container
+		h1= data.category ? data.category.name : 'News and Events'
+
+block content
+	.container
+		.marker-container
+			span.marker EXPLORE >
+			.inner-research
+				.research-description
+					h2
+						.research-pillar News and Events
+		.container-calendar
+			.calendar-events
+				.info-contain
+					ul.calendar-info
+						a(href="https://calendar.google.com/calendar/ical/invepqcvuhsi0alugtasabi69o%40group.calendar.google.com/public/basic.ics")
+							.calendar-contain
+								img.icon(src="/images/calendar.png")
+						a(href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-text="UCSB BRAIN INITIAITVE - Upcoming Events" data-hashtags="#BRI #UCSB #SAGE" data-show-count="false" charset="utf-8")
+			#calendar
+
+							
+
+		
+		.row
+		if data.categories.length
+			.col-sm-4.col-md-3
+				.container(style='padding-left: 0px;').categories
+					.col-xs-3.col-md-2.text-muted(style='padding-left:0;') CATEGORIES:
+					each cat in data.categories
+						a(href='/blog/' + cat.key, class=data.category && data.category.id == cat.id ? 'active-cat' : false).col-xs-2.col-md-1= /*cat.hide_old_posts == "optional" ? 'Upcoming ' + cat.name :*/ cat.name
+		.col-sm-8.col-md-9
+			if filters.category && !data.category
+				h3.text-muted Invalid Category.
+			else
+				if data.posts.results.length
+					.blog
+						each post in data.posts.results
+							+event(post)
+					if data.posts.totalPages > 1
+						h4.text-weight-normal Showing 
+							strong #{data.posts.first}
+							|  to 
+							strong #{data.posts.last}
+							|  of 
+							strong #{data.posts.total}
+							|  posts.
+					else
+						h4.text-weight-normal Showing #{utils.plural(data.posts.results.length, '* post')}.
+
+					if data.posts.totalPages > 1
+						ul.pagination
+							if data.posts.previous
+								li: a(href='?page=' + data.posts.previous): span.glyphicon.glyphicon-chevron-left
+							else
+								li.disabled: a(href='?page=' + 1): span.glyphicon.glyphicon-chevron-left
+							each p, i in data.posts.pages
+								li(class=data.posts.currentPage == p ? 'active' : null)
+									a(href='?page=' + (p == '...' ? (i ? data.posts.totalPages : 1) : p ))= p
+							if data.posts.next
+								li: a(href='?page=' + data.posts.next): span.glyphicon.glyphicon-chevron-right
+							else
+								li.disabled: a(href='?page=' + data.posts.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
+				else
+					if data.category
+						if data.category.hide_old_posts == "optional"
+							h3.text-muted There are currently no upcoming events!
+							h3.text-muted 
+								a(href='/blog/' + data.category.key + "/all")= 'Click here to view all events.' 
+						else
+							h3.text-muted There are no posts in the category #{data.category.name}.
+					else
+						h3.text-muted There are no posts yet.
+						if data.categories.length

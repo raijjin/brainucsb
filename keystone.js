@@ -1,6 +1,6 @@
 // Simulate config options from your production environment by
 // customising the .env file in your project's root folder.
-require('dotenv').load();
+//require('dotenv').load();
 
 // Require keystone
 var keystone = require('keystone');
@@ -11,21 +11,22 @@ var keystone = require('keystone');
 
 keystone.init({
 
-	'name': 'UCSBBrain',
-	'brand': 'UCSBBrain',
+	'name': 'BrainUCSB',
+	'brand': 'BrainUCSB',
 	
 	'less': 'public',
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',
 	'view engine': 'jade',
-
+	'cloudinary config': 'cloudinary://878685653631492:RGOPnGLesvXpHIJtJ-glYANxGEI@dmjm4pfj8',
+	
 	'auto update': true,
-
 	'session': true,
 	'auth': true,
 	'user model': 'User',
-	'cookie secret': '(brainucsb)'
+	'cookie secret': 'brainucsb'
+
 });
 
 // Load your project's Models
@@ -50,6 +51,9 @@ keystone.set('routes', require('./routes'));
 // Configure the navigation bar in Keystone's Admin UI
 
 keystone.set('nav', {
+	'news and events': ['posts', 'post-categories'],
+	//'galleries': 'galleries',
+	'People': 'people',
 	'enquiries': 'enquiries',
 	'users': 'users'
 });
@@ -57,4 +61,3 @@ keystone.set('nav', {
 // Start Keystone to connect to your database and initialise the web server
 
 keystone.start();
-

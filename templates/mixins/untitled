@@ -1,0 +1,28 @@
+mixin grant(post)
+	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id })).blog-post
+		.title-post
+			label
+				h2: a(href='/blog/post/' + post.slug class="post-title")= post.title
+		.post-content
+			.meta-post 
+				h4.text-center=post._.publishedDate.format('MMMM Do, YYYY')
+				article
+				if !post
+					h2 Invalid Post.
+				else
+					.post-full
+						!=post.content.brief
+						if post.content.extended
+							p.read-more: a(href='/blog/post/' + post.slug) Read more
+			.footer-post
+				if post.publishedDate
+					- var x = 0
+					if post.categories && post.categories.length
+						each cat, i in post.categories
+							if cat.name == "News"
+								p.lead.text-muted
+									| Date Posted: #{post._.publishedDate.format('MMMM Do, YYYY')} 
+								- x = 1 
+								break
+			-//if post.author
+			-//	| by #{post.author.name.first}

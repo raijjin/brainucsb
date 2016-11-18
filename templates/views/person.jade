@@ -1,0 +1,26 @@
+extends ../layouts/default
+
+block content
+	.container
+		.marker-container
+			p: a(href='/people') &larr; PREVIOUS PAGE
+			.inner-research
+				.research-description
+					h2
+						.research-pillar
+							p.center-post= data.person.name
+						.date-location
+
+
+
+		.row
+		article
+			if !data.person
+				h2 Invalid Post.
+			else
+				.post-person
+					if data.person.image.exists
+						.image-wrap: img(src=data.person._.image.fit(300,500)).img-responsive
+					p.post-content!= data.person.content.full
+
+				

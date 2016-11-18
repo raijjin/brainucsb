@@ -1,0 +1,29 @@
+extends ../layouts/default
+block js 
+	script(src='/js/effects/stickynav.js')
+
+include ../mixins/grant
+
+block content
+	#fullpage.fullpage-background
+		.container.research-container
+			.marker-container
+				span.marker EXPLORE >
+				.inner-research
+					.research-description
+						h2
+							.research-pillar GRANT OPPORTUNITIES
+						.info-pillar
+							p.info-style This is the century of the brain. The next great change in the human history will occur when we gain control over our brains. We will understand why we behave the way we do, why we get sick, and what we can do to help. 
+
+							p.info-style The 
+								span.title-brand UCSB BRAIN INITIATIVE 
+								span is the epicenter of our campus’ effort to change our future. UCSB has a long history of inventing technologies that have transformed our society. Now, our cross-disciplinary research teams are attacking the most fundamental problems in neuroscience and neuroengineering. 
+
+			.federal-container
+				p.opportunity GRANT OPPORTUNITY UPDATES:
+			.col-sm-8.col-md-9
+						if data.grants.results.length
+							.blog-profile
+								each grant in data.grants.results
+									+grant(grant)

@@ -24,9 +24,21 @@ exports.initLocals = function(req, res, next) {
 	var locals = res.locals;
 	
 	locals.navLinks = [
-		{ label: 'Apply',		key: 'apply',		href: '/' },
-		{ label: 'About',		key: 'about',		href: '/about' },
-		//{ label: 'Contact',		key: 'contact',		href: '/contact' }
+		{ label: 'Explore',		key: 'home',		items: ['about', 'events', 'grants', 'worldwide', 'blog'], 	href: '/',			dropdown: [
+																										{ label: 'About',					key: 'about',				href: '/about', 			description: "What is the UCSB Brain Initiative?"},
+																				 						{ label: 'News and Events',		key: 'events',		href: '/blog/news', 		description: "Find out what's happening!"},
+																				  						{ label: 'Grant Opportunities',		key: 'grants',		href: '/grants', 		description: "Coming soon!"}
+																				 						//{ label: 'BRAIN Initiative Worldwide',		key: 'worldwide',		href: '/', 		description: "What is the Federal BRI? "}
+																				  ]},
+		{ label: 'Research',	key: 'research',		items: ['light','force','time', 'action'],	href: '/blog/events', 		dropdown: [
+																				  						{ label: 'Light',				key: 'Light',			href: '/Light', 			description: "Find out how we're inventing new ways of seeing the brain"},
+																									  	{ label: 'Force',		key: 'force',		href: '/force', 		description: "Find out how we're combating traumatic brain injury"}, 
+																									  	{ label: 'Time',			key: 'time',			href: '/time', 			description: "Find out how we're fighting neurodegeneration and aging"},
+																									  	{ label: 'Action',			key: 'action',			href: '/action', 			description: "Find out how we're cracking the brain code"}
+																				  ]},
+		{ label: 'People',		key: 'people',		href: '/people', 	dropdown:[]},
+		//{ label: 'Fund',		key: 'fund',		href: '/fund', 	dropdown:[]},
+		{ label: 'Contact',		key: 'contact',		href: '/contact', 	dropdown:[]}
 	];
 	
 	locals.user = req.user;

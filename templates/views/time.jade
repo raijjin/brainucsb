@@ -1,0 +1,52 @@
+extends ../layouts/default
+mixin post(post)
+	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id })).blog-post
+		if post.image.exists
+				img(src=post._.image.fit(350,350)).img
+		.post-description
+			h2: a(href='/blog/post/' + post.slug class="post-title")= post.title
+			p.lead.text-muted
+				img.calendar(src="/images/calendar.png")
+				if post.publishedDate
+					| #{post._.publishedDate.format('MMMM Do, YYYY')} 
+				-//if post.author
+				-//	| by #{post.author.name.first}
+			p.lead.text-muted 		
+				img.calendar(src="/images/globe.png")
+				span= post.location
+			p!= post.content.brief
+			if post.content.extended
+				p.read-more: a(href='/blog/post/' + post.slug) Read more...
+			if post.categories && post.categories.length
+				| CATEGORY: 
+				each cat, i in post.categories
+					a(href='/blog/' + cat.key)= cat.name
+					if i < post.categories.length - 1
+						| , 
+					else
+
+block content
+	canvas#c
+	#fullpage
+		.container.research-container
+			.marker-container
+				span.marker RESEARCH >
+				.inner-research
+					.research-description
+						h2
+							.research-pillar TIME
+						.info-pillar
+							p The fight against neurodegeneration is a fight against two fundamental forces of the universe:
+							h4.boldQ Time and Entropy.
+							.brain-pillar
+						p.info-answer As time goes on, things fall apart. As cells fall apart, they become sick and ultimately die. When the dying cells are located in the brain, the process is known as neurodegeneration. At UCSB, we are committed to the fight against neurodegeneration. Our team combines expertise from stem cell research, image informatics, electrophysiology, computer science, and molecular biology. We are looking at the changes in nerve cells and neural networks over time. We identify signatures that predict neurodegeneration so that interventions can happen earlier. We study the process of aging in our environment, so that ultimately we can slow the process.
+						.info-pillar
+							.events-container
+								ul.redirect-pillar
+									li.style-pillar
+										a(href='/light' class='link-pillar')= 'RE:LIGHT'
+									li.style-pillar
+										a(href='/force' class='link-pillar')= 'RE:FORCE'
+									li.style-pillar
+										a(href='/ACTION' class='link-pillar')= 'RE:ACTION'
+	script(src='/js/effects/time.js')

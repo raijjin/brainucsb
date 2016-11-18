@@ -1,0 +1,29 @@
+extends ../layouts/default
+
+block content
+	.container
+		.marker-container
+			p: a(href='/blog') &larr; PREVIOUS PAGE
+			.inner-research
+				.research-description
+					h2
+						.research-pillar
+							p.center-post= data.post.title
+						.date-location
+							if data.post.publishedDate
+								| #{data.post._.publishedDate.format('MMMM Do, YYYY')}
+
+
+
+		.row
+		article
+			if !data.post
+				h2 Invalid Post.
+			else
+				.post
+					if data.post.image.exists
+						.image-wrap: img(src=data.post._.image.fit(750,450)).img-responsive
+					.post-content
+						!=data.post.content.full
+
+				

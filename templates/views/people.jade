@@ -1,0 +1,55 @@
+extends ../layouts/default
+block js 
+	script(src='/js/effects/stickynav.js')
+
+include ../mixins/person
+
+//-block intro
+	.container
+		h1= data.category ? data.category.name : 'News and Events'
+
+block content
+
+	.container
+		.marker-container
+			span.marker EXPLORE >
+			.inner-research
+				.research-description
+					h2
+						.research-pillar People
+			.row
+		.col-sm-8.col-md-9
+			if data.people.results.length
+				.blog-profile
+					each post in data.people.results
+						+person(post)
+				if data.people.totalPages > 1
+					h4.text-weight-normal Showing 
+						strong #{data.people.first}
+						|  to 
+						strong #{data.people.last}
+						|  of 
+						strong #{data.people.total}
+						|  people.
+				else
+					h4.text-weight-normal Showing #{utils.plural(data.people.results.length, '* person')}.
+
+				if data.people.totalPages > 1
+					ul.pagination
+						if data.people.previous
+							li: a(href='?page=' + data.people.previous): span.glyphicon.glyphicon-chevron-left
+						else
+							li.disabled: a(href='?page=' + 1): span.glyphicon.glyphicon-chevron-left
+						each p, i in data.people.pages
+							li(class=data.people.currentPage == p ? 'active' : null)
+								a(href='?page=' + (p == '...' ? (i ? data.people.totalPages : 1) : p ))= p
+						if data.people.next
+							li: a(href='?page=' + data.people.next): span.glyphicon.glyphicon-chevron-right
+						else
+							li.disabled: a(href='?page=' + data.people.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
+			else
+				if data.category
+					h3.text-muted There are no people in the category #{data.category.name}.
+				else
+					h3.text-muted There are no people yet.
+					if data.categories.length

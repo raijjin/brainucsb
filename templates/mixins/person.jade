@@ -1,0 +1,14 @@
+mixin person(people)
+	.post(data-ks-editable=editable(user, { list: 'People', id: people.id })).people-post
+			.people-content					
+				.people-header
+					label
+						h2: a(href='/people/' + people.slug class="post-title")= people.name					
+					if people.image.exists
+						.people-header-image(style="background-image: url(" +people.image.url +")")
+							.meta-event
+
+				.footer-people
+					p!=people.content.brief
+					if people.content.extended
+						p.read-more: a(href='/people/' + people.slug) Read more.

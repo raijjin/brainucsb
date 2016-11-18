@@ -1,0 +1,28 @@
+mixin event(post)
+	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id })).blog-post
+		.meta-event
+			label
+				img.calendar(src="/images/calendar.png")
+				| #{post._.publishedDate.format('MMMM Do, YYYY')} 
+		.post-content
+			.post-header
+				if post.image.exists
+						img(src=post._.image.fit(250,250)).img
+			.title-event
+				h2: a(href='/blog/post/' + post.slug class="post-title")= post.title
+			.footer-event
+				if post.publishedDate
+					- var x = 0
+					if post.categories && post.categories.length
+						each cat, i in post.categories
+							if cat.name == "News"
+								p.lead.text-muted
+									| Date Posted: #{post._.publishedDate.format('MMMM Do, YYYY')} 
+								- x = 1 
+								break
+					if x == 0
+						p.lead.text-muted
+							img.calendar(src="/images/globe.png")
+							span= post.location
+			-//if post.author
+			-//	| by #{post.author.name.first}

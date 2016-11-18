@@ -1,0 +1,15 @@
+mixin grant(grant)
+	.post(data-ks-editable=editable(user, { list: 'Grant', id: grant.id })).grant-post
+		.title-post
+			label
+				h2: a(href='/grants/grant/' + grant.slug class="post-title")= grant.name
+		.post-content
+			.meta-post 
+				article
+				if !grant
+					h2 Invalid Post.
+				else
+					.post-full
+						p!= grant.content
+			-//if post.author
+			-//	| by #{post.author.name.first}

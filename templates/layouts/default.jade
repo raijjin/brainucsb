@@ -8,16 +8,19 @@ html
 		meta(charset="utf-8")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		meta(name="google-site-verification" content="o7wiVkXZBFf33Jxec3LOak77iZE4TQt8e2yS4CvTaBAv")
 
-		title= title || 'BRAIN INITIATIVE @ UCSB'
-		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
+		title= title || 'BRI: UCSB'
+		link(rel="shortcut icon", href="/images/favicon-logo.png", type="image/x-icon")
+		link(rel="stylesheet" href="/js/fullcalendar/fullcalendar.min.css")
+		link(rel="stylesheet" href="/js/fullcalendar/fullcalendar-custom.css")
+		link(rel="stylesheet" href="/js/drop-1.4.2/drop-theme-arrows.css")
 
 		//- Customise the stylesheet for your site by editing /public/styles/site.less
 		//- All .less files will be automatically compiled and minified in production.
-		link(href="/styles/vendor.css", rel="stylesheet")
-		link(href="/styles/site.css", rel="stylesheet")
-		link(href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,500' rel='stylesheet' type='text/css')
-		link(href='https://fonts.googleapis.com/css?family=Lato:400,700,300,900' rel='stylesheet' type='text/css')
+		link(href="/styles/site.min.css", rel="stylesheet")
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:800' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
 		//- This file provides the default styling for the KeystoneJS Content Editor
 		if user && user.canAccessKeystone
@@ -29,7 +32,6 @@ html
 			script(src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js")
 			script(src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js")
 		//-[endif]
-
 		//- Include template-specific stylesheets by extending the css block
 		block css
 
@@ -40,12 +42,11 @@ html
 	body
 
 		//- HEADER
-		#header: .fluid-container
+		#header: .container-fluid
 
 			//- Customise your site's navigation by changing the navLinks Array in ./routes/middleware.js
 			//- ... or completely change this header to suit your design.
-
-			div(role="navigation").navbar.navbar-inverse.navbar-fixed-top
+			div(role="navigation").navbar.navbar-default.navbar-static-top
 				.container-fluid
 					.navbar-header
 						button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
@@ -53,28 +54,46 @@ html
 							span.icon-bar
 							span.icon-bar
 							span.icon-bar
-						a.navbar-brand(href='/') Brain Initiative //
-							span.ucsb	UCSB
+						a.navbar-brand(href='/') 
+							.brand-title
+								img(src = "/images/bri-logo.png" style="width: 40px;")
+								span.title-ucsb 
+									b UCSB
+								span.title-brain-initiative 
+									b BRAIN INITIATIVE
 					.collapse.navbar-collapse
-						ul.nav.navbar-nav.navbar-left
+						ul.nav.navbar-nav.navbar-right
 							each link in navLinks
-								li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
-						//-	
-							ul.nav.navbar-nav.navbar-right
-								if user
-									if user.canAccessKeystone
-										li: a(href='/keystone') Open Keystone
-									li: a(href='/keystone/signout') Sign Out
-								else
-									li: a(href='/keystone/signin') Sign In
-
+								if link.dropdown.length == 0
+									li(class=(section == link.key ? 'active' : null))
+										a(href=link.href)= link.label
+								else 
+									li.dropdown(class=(link.items.indexOf(section) >= 0 || link.key == section ? 'active' : null))
+										a.dropdown-toggle(href='#' data-toggle="dropdown")= link.label
+											b(class="caret")
+										ul.dropdown-menu(role="menu")
+											each sublink in link.dropdown
+												li.dropdown-container
+													.svg-wrapper
+														svg(width="200" height="100" xmlns="http://www.w3.org/2000/svg")
+															rect(id="shape" width="200" height="100")
+															#text
+																a(href=sublink.href class="spot")
+																	.menu-item-title= sublink.label
+																		p= sublink.description
+						//-ul.nav.navbar-nav.navbar-right
+							if user
+								if user.canAccessKeystone
+									li: a(href='/keystone') Open Keystone
+								li: a(href='/keystone/signout') Sign Out
+							//-else
+								li: a(href='/keystone/signin') Sign In
 		//- BODY
 		#body
 
 			//- NOTE:
 			//- There is no .container wrapping class around body blocks to allow more flexibility in design.
 			//- Remember to include it in your templates when you override the intro and content blocks!
-
 			//- The Intro block appears above flash messages (used for temporary information display)
 			block intro
 
@@ -85,35 +104,78 @@ html
 			//- The content block should contain the body of your template's content
 			block content
 
+		//-if section !='home'
+			//- FOOTER
+			#footer: .container
+				img(src = "/images/bri-logo.png" style="width: 150px;").col-sm-2.col-xs-3
+				each link in navLinks
+					- var x = link.dropdown.length
+					if link.dropdown.length != 0
+						div(class = "col-sm-2 col-xs-3")
+							ul
+								li
+									b= link.label
+								each sublink in link.dropdown								
+									li.sublink
+										a(href=sublink.href)= sublink.label
+				div(class = "col-sm-2 col-xs-3")
+					#contact-col
+						ul
+							li
+								b Contact
+							li.sublink 
+								a(href="mailto:briucsb@ucsb.edu") briucsb@ucsb.edu
+							li.sublink (805) 893-2726
+		//-else
+		#homefooter: .row
+			.col-xs-2
+				a(href="/about") About
+			.col-xs-2
+				a(href="/blog/events") Events
+			.col-xs-2
+				a(href="/contact") Contact Us
+			.col-xs-6
+				.pull-right
+					p Brain Initiative @UCSB
 
-		//- FOOTER
-		.container: #footer
+			//Powered by Keystone.js: http://keystonejs.com
 
-			//- You don't _have_ to include a link saying your site is powered by KeystoneJS, but we appreciate it!
-			p Questions can be emailed to 
-				a(href='mailto:queenan@brain.ucsb.edu') queenan@brain.ucsb.edu
-			p Located at <a href = https://www.google.com/maps/dir//34.4131924,-119.8422001/@34.4126293,-119.8423348,17.21z target="_blank">Bren Hall, Isla Vista, CA, United States</a>
-			p Website under construction!
-			// Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.
-
+		
 
 		//- JAVASCRIPT
-
 		//- jQuery 1.11.1 is included by default, and required by both Bootstrap
 		//- and the KeystoneJS Content Editor. If you are not targeting IE8,
 		//- you can upgrade to 2.1.3 (also bundled) for better performance.
 		script(src='/js/jquery/jquery-1.11.2.min.js')
+		//-
+			//-JQuery for fading in and out
+			script(type="text/javascript").
+				$(document).ready(function() {
+					$('a').click(
+						function(event) {
+							if (this.target) { return; } 
+							event.preventDefault();
+							transitionToPage(this.href);
+						}
+					);
+					function transitionToPage(location) {
+						$('#body, #footer').fadeTo(500, 0.01, function() {
+							window.location = location;
+						});
+					}
+				});
+			
+
+
 
 		//- Customise which Bootstrap javascript files are served by including
 		//- them specifically here, instead of bootstrap-3.3.4.min.js
 		script(src='/js/bootstrap/bootstrap-3.3.4.min.js')
-
 		//- The KeystoneJS Content Editor provides support for ks-editable data attributes,
 		//- which generate links to edit content for users who can access Keystone
+		noscript You have JavaScript disabled. For the best experience, please turn JavaScript on.
 		if user && user.canAccessKeystone
 			script(src='/keystone/js/content/editor.js')
-
 		//- Add scripts that are globally required by your site here.
-
 		//- Include template-specific javascript files by extending the js block
 		block js

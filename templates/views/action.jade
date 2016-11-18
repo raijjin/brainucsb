@@ -1,0 +1,58 @@
+extends ../layouts/default
+mixin post(post)
+	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id })).blog-post
+		if post.image.exists
+				img(src=post._.image.fit(350,350)).img
+		.post-description
+			h2: a(href='/blog/post/' + post.slug class="post-title")= post.title
+			p.lead.text-muted
+				img.calendar(src="/images/calendar.png")
+				if post.publishedDate
+					| #{post._.publishedDate.format('MMMM Do, YYYY')} 
+				-//if post.author
+				-//	| by #{post.author.name.first}
+			p.lead.text-muted 		
+				img.calendar(src="/images/globe.png")
+				span= post.location
+			p!= post.content.brief
+			if post.content.extended
+				p.read-more: a(href='/blog/post/' + post.slug) Read more...
+			if post.categories && post.categories.length
+				| CATEGORY: 
+				each cat, i in post.categories
+					a(href='/blog/' + cat.key)= cat.name
+					if i < post.categories.length - 1
+						| , 
+					else
+
+
+block content
+	canvas#light
+	//-#fullpage.research-background
+	#fullpage
+		.container.research-container
+			.marker-container
+				span.marker RESEARCH >
+				.inner-research
+					.research-description
+						h2
+							.research-pillar ACTION
+						.info-pillar
+							p.uppercase-description How do we decode the world around us? How do we store this information? How do we compute action?
+							h4.boldQ WHY DO WE BEHAVE THE WAY WE DO?
+							.brain-pillar
+								h4.questioning 
+						p.info-answer Our team is answering this question from the cellular to the human level. Drawing on expertise from human brain imaging, mechanical engineering, physics, molecular biology & genetics, we are cracking the neural code. We are determining how information is taken in from the world and turned into complex movements and behaviors.
+						.info-pillar
+							.events-container
+								ul.redirect-pillar
+									li.style-pillar
+										a(href='/time' class='link-pillar')= 'RE:TIME'
+									li.style-pillar
+										a(href='/light' class='link-pillar')= 'RE:LIGHT'
+									li.style-pillar
+										a(href='/force' class='link-pillar')= 'RE:FORCE'
+									//-li.style-pillar
+										a(href='/profile' class='link-pillar')= 'RE:PROFILE'
+
+	script(src='/js/effects/action.js')

@@ -1,0 +1,55 @@
+extends ../layouts/default
+mixin post(post)
+	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id })).blog-post
+		if post.image.exists
+				img(src=post._.image.fit(350,350)).img
+		.post-description
+			h2: a(href='/blog/post/' + post.slug class="post-title")= post.title
+			p.lead.text-muted
+				img.calendar(src="/images/calendar.png")
+				if post.publishedDate
+					| #{post._.publishedDate.format('MMMM Do, YYYY')} 
+				-//if post.author
+				-//	| by #{post.author.name.first}
+			p.lead.text-muted 		
+				img.calendar(src="/images/globe.png")
+				span= post.location
+			p!= post.content.brief
+			if post.content.extended
+				p.read-more: a(href='/blog/post/' + post.slug) Read more...
+			if post.categories && post.categories.length
+				| CATEGORY: 
+				each cat, i in post.categories
+					a(href='/blog/' + cat.key)= cat.name
+					if i < post.categories.length - 1
+						| , 
+					else
+
+
+block content
+	canvas#d
+	#fullpage
+		.container.research-container
+			.marker-container
+				span.marker RESEARCH >
+				.inner-research
+					.research-description
+						h2
+							.research-pillar FORCE
+						.info-pillar
+							p.uppercase-description When you hit a glass it shatters. When you hit a tennis ball it bounces.
+							h4.boldQ What happens when you hit a brain?
+							.brain-pillar
+								h4.questioning Does it differ between people? When a person has osteoporosis, they are more susceptible to injury because their bones are more brittle. Do some people have brittle brains?
+						p.info-answer Our research team is tackling this question from the nano to the human level. Drawing on expertise from mechanical engineering, materials research, neuroscience, and physics, we are examining the brain as a material, with chemical, electrical, mechanical, thermal, and optical properties. We are determining how these properties differ between individuals, by gender and genotype, and how these properties are changed by head injury. Using this information, we will be able to invent new materials and strategies to bolster the brain's ability to function.
+						.info-pillar
+							.events-container
+								ul.redirect-pillar
+									li.style-pillar
+										a(href='/time' class='link-pillar')= 'RE:TIME'
+									li.style-pillar
+										a(href='/light' class='link-pillar')= 'RE:LIGHT'
+									li.style-pillar
+										a(href='/action' class='link-pillar')= 'RE:ACTION'
+
+	script(src='/js/effects/force.js')
