@@ -8,7 +8,7 @@
 
 .fc.fc-unthemed.fc-ltr {
 	font-family: liberator;
-	font-size: 1em;
+	font-size: 1.2em;
 	margin-left: 24px;
 }
 
@@ -24,8 +24,6 @@ tr:first-child>td>.fc-day-grid-event {
 .fc-event {
 	border: 1px solid #E1BEE7;
 }
-
-
 
 .fc-content {
 	display: flex;
@@ -51,3 +49,11 @@ tr:first-child>td>.fc-day-grid-event {
 	display: flex;
 	flex-direction: row;
 }
+
+.fc-toolbar .fc-state-active, .fc-toolbar .ui-state-active {
+	z-index: 0;
+
+}
+
+
+
