@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "keystone": "0.3.21",
     "async": "1.5.2",
-    "underscore": "1.8.3",
-    "dotenv": "^1.1.0"
+    "dotenv": "^1.1.0",
+    "jade": "^1.11.0",
+    "keystone": "4.0.0-beta.8",
+    "underscore": "1.8.3"
   },
   "devDependencies": {
     "gulp": "3.9.0",
@@ -19,8 +20,7 @@
     "npm": ">=1.4.9"
   },
   "scripts": {
-    "start": "node keystone.js",
-    "postinstall": "npm i keystonejs/keystone"
+    "start": "node keystone.js"
   },
   "main": "keystone.js"
 }
