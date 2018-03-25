@@ -19,7 +19,8 @@
     "npm": ">=1.4.9"
   },
   "scripts": {
-    "start": "node keystone.js"
+    "start": "node keystone.js",
+    "postinstall": "npm i keystonejs/keystone"
   },
   "main": "keystone.js"
 }
